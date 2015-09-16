@@ -8,6 +8,8 @@
 
 (def some-map {:question "Who is the best?" :answer "Clojure"})
 
+;all of these are "persistent" in contrary with "ephemeral"
+
 (defn check-structural-sharing [coll x y]
   (let [first (cons x coll)
         second (cons y coll)]
