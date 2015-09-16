@@ -16,4 +16,16 @@
 ; Another HOF
 (def inc-double (comp (partial * 2) inc))
 
-(print (map inc-double [1 2 3 4 5 6]))
+;(println (map inc-double [1 2 3 4 5 6]))
+
+; Variadic arguments
+(defn var-arg-sum [& others]
+  (apply + others))
+
+(println (var-arg-sum 1 2 3 4 5))
+;(println (var-arg-sum 1 2 3 4 5 6))
+
+(defn power
+  ([x] (identity x))
+  ([x y] (apply * (repeat y x))))
+; do you spot an issue here?
