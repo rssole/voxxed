@@ -8,7 +8,7 @@ public class Loop {
         int numberOfOldTimers = 0;
         for (Resident res: residents) {
             for (Residence resc: residences) {
-                if (res.getResidentId().equals(resc.getId()) && res.getYearsOfResidence() > resc.getAge()) {
+                if (res.getResidentId().equals(resc.getId()) && res.getYearsOfResidence().equals(resc.getAge())) {
                     ++numberOfOldTimers;
                 }
             }

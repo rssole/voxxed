@@ -10,7 +10,8 @@
 
 ;all of these are "persistent" in contrary with "ephemeral"
 
-(defn check-structural-sharing [coll x y]
-  (let [first (cons x coll)
-        second (cons y coll)]
-    (identical? (next first) (next second))))
+(def l1 '(1 2 3 4 5))
+(def l2 (conj l1 6))
+(def l3 (conj l1 7))
+
+(println "Identical tails of l2, l3? " (identical? (rest l2) (rest l3)))
