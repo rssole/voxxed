@@ -29,3 +29,9 @@
   ([x] (identity x))
   ([x y] (apply * (repeat y x))))
 ; do you spot an issue here?
+
+;guess what? data structures are functions themselves
+
+({:a 1 :b 2 :c 3} :c)
+
+([1 2 3 4 5 6] 3)
