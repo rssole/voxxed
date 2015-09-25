@@ -13,4 +13,4 @@
          (.add rbtn))
     (.add win panel)
     (.pack win)
-    win))
+    {:win win :label label :btn btn :rbtn rbtn}))
