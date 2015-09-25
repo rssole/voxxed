@@ -16,39 +16,32 @@
   (zip [me it]
     (apply str (zip (vec me) (vec it)))))
 
+;<editor-fold desc="Multimethods">
+
 ;Multimethods
 
-(defn print-event-dispatch [e]
-  (keyword (.getSimpleName (class (.getSource e)))))
+(defn handle-event-dispatch [e]
+  (keyword (str 'voxxed.polymorph) (.. e (getSource) (getClass) (getSimpleName))))
 
-(defmulti print-event "Simply outputs source event" print-event-dispatch)
+(defmulti handle-event "Handles any source event" handle-event-dispatch)
 
-(defmethod print-event :default [_]
+(defmethod handle-event :default [_]
   (println "I am almighty method, capable of handling anything!"))
 
-;(defmethod print-event :JButton [_]
-;  (println "Only buttons here :)"))
-;
-;(defmethod print-event :JRadioButton [_]
+(defmethod handle-event ::JButton [_]
+  (println "Only buttons here :)"))
+
+;(defmethod handle-event ::JRadioButton [_]
 ;  (println "Listenin' to the radio!"))
 ;
-;(defmethod print-event :JLabel [_]
+;(defmethod handle-event ::JLabel [_]
 ;  (println "Labels all around..."))
 
-;(for [lsnr (.getMouseListeners (:label win1))]
-;  (.removeMouseListener (:label win1) lsnr))
-;
-;(.addMouseListener (:label win1) (proxy [MouseAdapter] []
-;                                   (mousePressed [e]
-;                                     (print-event e))))
-;(.addActionListener (:rbtn win1) (reify ActionListener
-;                                   (actionPerformed [_ e]
-;                                     (print-event e))))
-;(.addActionListener (:btn win1) (reify ActionListener
-;                                  (actionPerformed [_ e]
-;                                    (print-event e))))
+;(derive ::JRadioButton ::JButton)
 
+;(use '[voxxed.polymorph :as poly] '[voxxed.support.polymorph :as spoly] :reload)
 
+;</editor-fold>
 
 
 
