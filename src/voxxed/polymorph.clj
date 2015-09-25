@@ -18,6 +18,14 @@
 
 ;Multimethods
 
+(defn- print-event-dispatch [type]
+  (keyword (.getSimpleName type)))
+
+(defmulti print-event "Simply outputs source event" print-event-dispatch)
+
+(defmethod print-event :default
+  (println "I am almighty method, capable of handling anything!"))
+
 
 
 
