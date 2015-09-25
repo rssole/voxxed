@@ -4,14 +4,11 @@
 
 (def decoded-sequence (map char coded-string))
 
-(defn sys-out [smthng]
-  (println smthng))
-
-(sys-out decoded-sequence)
+(println decoded-sequence)
 
 ;homoiconic
 (println
-  (apply str (map char [72 101 108 108 111 44 32 67 108 111 106 117 114 101 33])))
+  (apply str (map char coded-string)))
 
 ;prefix notation
 (defn sum [a b c d e]
