@@ -36,5 +36,19 @@
 
 ([1 2 3 4 5 6] 3)
 
-; keywords are also both data but and function
+;keywords are also both data but and function
 (:c {:a 1 :b 2 :c 3})
+
+;guess what again? quickly! functions allows for argument destructuring
+
+;... by means of vector
+(defn destruction [[x y :as original]]
+  (println x "," y "and original: " original))
+
+;... by means of map...
+(defn map-destruction [{fn :first-name ln :last-name :as person}]
+  (println fn "," ln "and everything: " person))
+
+;... or as a shortcut:
+(defn map-destruction-k [{:keys [first-name last-name] :as person}]
+  (println first-name "," last-name "and everything: " person))

@@ -8,7 +8,7 @@
 
 (def some-map {:question "Who is the best?" :answer "Clojure"})
 
-;all of these are "persistent" in contrary with "ephemeral"
+;all of these are "persistent" in contrary with "ephemeral" (c) Okasaki, 1998.
 
 (def l1 '(1 2 3 4 5))
 (def l2 (conj l1 6))

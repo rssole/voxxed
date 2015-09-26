@@ -1,5 +1,6 @@
 (ns voxxed.polymorph
-  (:import (clojure.lang PersistentVector)))
+  (:import (clojure.lang PersistentVector)
+           (java.util Map)))
 
 ;Protocols
 
@@ -16,7 +17,11 @@
   (zip [me it]
     (apply str (zip (vec me) (vec it)))))
 
-;<editor-fold desc="Multimethods">
+(extend-protocol Zippable
+  Map
+  (zip [me it]
+    (apply merge (for [k (keys me)]
+                   {k [(get me k) (get it k)]}))))
 
 ;Multimethods
 
@@ -40,8 +45,6 @@
 ;(derive ::JRadioButton ::JButton)
 
 ;(use '[voxxed.polymorph :as poly] '[voxxed.support.polymorph :as spoly] :reload)
-
-;</editor-fold>
 
 
 
