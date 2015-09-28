@@ -18,7 +18,7 @@
     (swap! current (fn [_ x] x) val)))
 
 ; globals are actually still useful for what
-; they were for decades
+; they were since ever :)
 
 (def ^:const the-answer-to-the-ultimate-question-of-life-the-universe-and-everything 42)
 
