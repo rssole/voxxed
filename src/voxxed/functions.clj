@@ -36,7 +36,7 @@
 
 ([1 2 3 4 5 6] 3)
 
-;keywords are also both data but and function
+;keywords have special treatment in Clojure but are also a function
 (:c {:a 1 :b 2 :c 3})
 
 ;guess what again? quickly! functions allows for argument destructuring

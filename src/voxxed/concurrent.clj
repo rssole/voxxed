@@ -1,6 +1,8 @@
 (ns voxxed.concurrent
   (:use [voxxed.support.concurrent :only [dothreads!]]))
 
+(use '[voxxed.concurrent] '[voxxed.support.concurrent :only [dothreads!]])
+
 (def thread-ids (agent {::senders #{} ::receivers #{}}))
 
 (def oo7 (agent 0))
@@ -15,6 +17,7 @@
 (dothreads! #(do (register-tid-in ::senders (.getId (Thread/currentThread)))
                  (send oo7 (fn [a]
                              (register-tid-in ::receivers (.getId (Thread/currentThread)))
+                             (Thread/sleep 25)
                              (inc a)))) :times 30 :threads 4)
 
 (println "So far reached value of oo7:" @oo7)
@@ -29,13 +32,15 @@
 (defn transfer [amount src tgt]
   (dosync
     (alter src #(do
-                 ;(Thread/sleep 1500)
-                 ;(println "Taking money...")
+                 (Thread/sleep 1500)
+                 (println "Taking money...")
                  (update % :balance - %2)) amount)
     (alter tgt #(do
-                 ;(Thread/sleep 1500)
-                 ;(println "Paying money...")
+                 (Thread/sleep 1500)
+                 (println "Paying money...")
                  (update % :balance + %2)) amount)))
+
+;(use '[voxxed.concurrent] '[voxxed.support.concurrent] :reload)
 
 ;(do
 ;  (dothreads!
@@ -47,14 +52,4 @@
 ;    :times 2
 ;    :threads 5)
 ;  (transfer 500 account-x account-y))
-
-
-
-
-
-
-
-
-
-
 
