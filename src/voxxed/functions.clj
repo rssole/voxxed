@@ -13,7 +13,7 @@
   (reduce #(* %1 %2) (range 1 (inc x))))
 ; that is right * could have been used on it's own :)
 
-; Another HOF
+; F returning f
 (def inc-double (comp (partial * 2) inc))
 
 ;(println (map inc-double [1 2 3 4 5 6]))
