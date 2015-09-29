@@ -2,13 +2,15 @@
   (:import (clojure.lang PersistentVector)
            (java.util Map)))
 
+;(use '[voxxed.polymorph :as poly] '[voxxed.support.polymorph :as spoly] :reload)
+
 ;Protocols
 
 (defprotocol Zippable
   (zip [me it]))
 
 (extend-protocol Zippable
-  PersistentVector
+  PersistentVector                                          ; [1 2 3 4 5 6]
   (zip [me it]
     (flatten (map #(do [% %2]) me it))))
 
@@ -43,8 +45,6 @@
 ;  (println "Labels all around..."))
 
 ;(derive ::JRadioButton ::JButton)
-
-;(use '[voxxed.polymorph :as poly] '[voxxed.support.polymorph :as spoly] :reload)
 
 
 

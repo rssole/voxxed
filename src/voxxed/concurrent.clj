@@ -42,14 +42,14 @@
 
 ;(use '[voxxed.concurrent] '[voxxed.support.concurrent] :reload)
 
-;(do
-;  (dothreads!
-;    (fn [] (send oo7 (fn [_ amount]
-;                       (Thread/sleep 500)
-;                       (println "Here is some money for laundering...")
-;                       (dosync
-;                         (alter account-x #(update % :balance + %2) amount))) 100))
-;    :times 2
-;    :threads 5)
-;  (transfer 500 account-x account-y))
-
+(defn x-change-sim "Simulates concurrent modification of account(s)" []
+  (do
+    (dothreads!
+      (fn [] (send oo7 (fn [_ amount]
+                         (Thread/sleep 500)
+                         (println "Here is some money for laundering...")
+                         (dosync
+                           (alter account-x #(update % :balance + %2) amount))) 100))
+      :times 2
+      :threads 5)
+    (transfer 500 account-x account-y)))

@@ -8,7 +8,7 @@
                 (recur (dec n) (* f n))))]
     (go x 1)))
 
-; Anonymous + HOF
+; Anonymous f-literal + HOF
 (defn factorial-r [x]
   (reduce #(* %1 %2) (range 1 (inc x))))
 ; that is right * could have been used on it's own :)
@@ -28,7 +28,6 @@
 (defn power
   ([x] (identity x))
   ([x y] (apply * (repeat y x))))
-; do you spot an issue here?
 
 ;guess what? data structures are functions themselves
 
