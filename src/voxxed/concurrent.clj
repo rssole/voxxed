@@ -1,7 +1,7 @@
 (ns voxxed.concurrent
   (:use [voxxed.support.concurrent :only [dothreads!]]))
 
-(use '[voxxed.concurrent] '[voxxed.support.concurrent :only [dothreads!]])
+;(use '[voxxed.concurrent] '[voxxed.support.concurrent :only [dothreads!]] :reload)
 
 (def thread-ids (agent {::senders #{} ::receivers #{}}))
 
