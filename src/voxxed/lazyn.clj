@@ -1,4 +1,4 @@
-(ns voxxed.lazyn)
+(ns voxxed.lazyn)                                           ;too lazy to write whole word :)
 
 (def plain (range 1 1000))
 

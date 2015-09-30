@@ -1,4 +1,8 @@
+;It is not provided “out of the box”
+;   Clojure is pretty global by default
+
 (ns voxxed.encapsulation)
+;namespaces are pretty static...
 
 ;single resource available...
 (def mutable (atom {}))

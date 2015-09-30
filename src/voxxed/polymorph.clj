@@ -1,10 +1,13 @@
+;Clojure is not OO language!
+;How it supports polymorphism?!
+
 (ns voxxed.polymorph
   (:import (clojure.lang PersistentVector)
            (java.util Map)))
 
 ;(use '[voxxed.polymorph :as poly] '[voxxed.support.polymorph :as spoly] :reload)
 
-;Protocols
+;Meet and greet (: Protocols
 
 (defprotocol Zippable
   (zip [me it]))
@@ -25,26 +28,31 @@
     (apply merge (for [k (keys me)]
                    {k [(get me k) (get it k)]}))))
 
-;Multimethods
+(zip [1 2 3] [4 5 6])
+;=> (1 4 2 5 3 6)
+
+(zip "abc" "def")
+
+;Meet and greet (: Multimethods
 
 (defn handle-event-dispatch [e]
-  (keyword (str 'voxxed.polymorph) (.. e (getSource) (getClass) (getSimpleName))))
+  (.. e (getSource) (getClass) (getSimpleName)))
 
 (defmulti handle-event "Handles any source event" handle-event-dispatch)
 
 (defmethod handle-event :default [_]
   (println "I am almighty method, capable of handling anything!"))
 
-(defmethod handle-event ::JButton [_]
+(defmethod handle-event  "JButton" [_]
   (println "Only buttons here :)"))
 
-(defmethod handle-event ::JRadioButton [_]
+(defmethod handle-event "JRadioButton" [_]
   (println "Listenin' to the radio!"))
-;
-;(defmethod handle-event ::JLabel [_]
+
+;(defmethod handle-event "JLabel" [_]
 ;  (println "Labels all around..."))
 
-;(derive ::JRadioButton ::JButton)
+;(derive "JRadioButton" "JButton")
 
 
 

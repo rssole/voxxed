@@ -1,5 +1,7 @@
 (ns voxxed.functions)
 
+;Functions are first-class citizens
+
 ; POF :)
 (defn factorial [x]
   (letfn [(go [n f]
@@ -22,8 +24,8 @@
 (defn var-arg-sum [& others]
   (apply + others))
 
-(println (var-arg-sum 1 2 3 4 5))
-;(println (var-arg-sum 1 2 3 4 5 6))
+(var-arg-sum 1 2 3 4 5)
+;=>15
 
 (defn power
   ([x] (identity x))
@@ -32,8 +34,10 @@
 ;guess what? data structures are functions themselves
 
 ({:a 1 :b 2 :c 3} :c)
+;=>3
 
 ([1 2 3 4 5 6] 3)
+;=>4
 
 ;keywords have special treatment in Clojure but are also a function
 (:c {:a 1 :b 2 :c 3})
