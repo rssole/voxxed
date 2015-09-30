@@ -1,6 +1,6 @@
 (ns voxxed.macros)
 
-;(use 'voxxed.macros)
+;(use 'voxxed.macros :reload)
 
 (defmacro foreach [[sym coll] & body]
   `(loop [coll# ~coll]
@@ -12,7 +12,7 @@
   '(foreach [ch ["Here is a simple macro"]]
            (println ch))))
 
-(clojure.pprint/pprint (macroexpand
+'(clojure.pprint/pprint (macroexpand
   '(->> "Here is another one but much more useful"
        (filter #(not (#{\a \e \i \o \u} %)))
        (map #(Character/toUpperCase %))
