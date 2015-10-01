@@ -16,7 +16,7 @@
 
 ;all of these are "persistent" in contrast to "ephemeral" (c) Okasaki, 1998.
 
-;and share structure to support immutability
+;and share structure to support efficient immutability
 
 (def l1 '(1 2 3 4 5))
 (def l2 (conj l1 6))
